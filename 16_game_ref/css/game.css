@@ -1,0 +1,81 @@
+/* Preloader for platformer_Games_project */
+
+#preloader {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #ffffff;
+}
+
+#preloader.hide-preloader {
+	animation: hidePreloader 5s;
+}
+
+#preloader.preloader-hidden {
+	display: none;
+}
+
+@keyframes hiderPeloader {
+	0% {
+			opacity: 1;
+	}
+	100% {
+			opacity: 0;
+	}
+}
+
+
+
+
+/* GAME */
+
+body {
+  background-color: darksalmon;
+}
+
+h1 {
+	text-align: center;
+	border: 4px solid #000;
+	width: 500px;
+	margin-left: 483px;
+	color:rgb(74, 10, 10);
+	border-radius: 25px;
+	padding: 10px;
+}
+
+.background    { background: rgb(52, 166, 251);
+                 table-layout: fixed;
+                 border-spacing: 0;   }
+.background td { padding: 0;          }
+.lava          { background: rgb(255, 100, 100); }
+.wall          { background: white;   }
+
+.actor  { position: absolute;  }
+.coin   { background: rgb(241, 229, 89); }
+.player { background: rgb(64, 64, 64); }
+
+.game {
+  overflow: hidden;
+  max-width: 600px;
+  max-height: 450px;
+  position: relative;
+  top: 50px;
+  left: 450px;
+
+}
+
+.lost .player {
+  background: rgb(160, 64, 64);
+}
+.won .player {
+  box-shadow: -4px -7px 8px white, 4px -7px 8px white;
+}
+
+
+
+

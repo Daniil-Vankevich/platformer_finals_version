@@ -1,0 +1,27 @@
+<!doctype html>
+<script src="code/chapter/16_game.js"></script>
+<script src="code/levels.js"></script>
+
+<link rel="stylesheet" href="./css/game.css">
+
+<body>
+	
+  <h1>Путь к вершине</h1>
+
+	<div id="preloader">
+		<img src="./preloader_platformer/please-wait.gif">
+	</div>
+  
+
+  <script>
+  
+    let preloader = document.getElementById('preloader');
+    preloader.classList.add('hide-preloader');
+    setInterval(function() {
+          preloader.classList.add('preloader-hidden');
+    }, 990);
+  
+
+    setTimeout(() => runGame(GAME_LEVELS, DOMDisplay), 990);
+  </script>
+</body>
