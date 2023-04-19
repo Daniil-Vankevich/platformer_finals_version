@@ -178,3 +178,5 @@ if (typeof module != "undefined" && module.exports && (typeof window == "undefin
   module.exports = GAME_LEVELS;
 if (typeof global != "undefined" && !global.GAME_LEVELS)
   global.GAME_LEVELS = GAME_LEVELS;
+
+  module.exports = GAME_LEVELS;

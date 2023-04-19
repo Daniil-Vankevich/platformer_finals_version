@@ -32,6 +32,8 @@ var Level = class Level {
   }
 }
 
+module.exports = Level;
+
 var State = class State {
   constructor(level, actors, status) {
     this.level = level;
@@ -48,6 +50,8 @@ var State = class State {
   }
 }
 
+module.exports = State;
+
 var Vec = class Vec {
   constructor(x, y) {
     this.x = x; this.y = y;
@@ -59,6 +63,8 @@ var Vec = class Vec {
     return new Vec(this.x * factor, this.y * factor);
   }
 }
+
+module.exports = Vec;
 
 var Player = class Player {
   constructor(pos, speed) {
@@ -75,6 +81,8 @@ var Player = class Player {
 }
 
 Player.prototype.size = new Vec(0.8, 1.5);
+
+module.exports = Player;
 
 var Lava = class Lava {
   constructor(pos, speed, reset) {
@@ -98,6 +106,8 @@ var Lava = class Lava {
 
 Lava.prototype.size = new Vec(1, 1);
 
+module.exports = Lava;
+
 var Coin = class Coin {
   constructor(pos, basePos, wobble) {
     this.pos = pos;
@@ -115,6 +125,8 @@ var Coin = class Coin {
 }
 
 Coin.prototype.size = new Vec(0.6, 0.6);
+
+module.exports = Coin;
 
 var levelChars = {
   ".": "empty", "#": "wall", "+": "lava",
@@ -145,6 +157,8 @@ var DOMDisplay = class DOMDisplay {
   clear() { this.dom.remove(); }
 }
 
+module.exports = DOMDisplay;
+
 var scale = 20;
 
 function drawGrid(level) {
@@ -157,6 +171,8 @@ function drawGrid(level) {
   ));
 }
 
+module.exports = drawGrid;
+
 function drawActors(actors) {
   return elt("div", {}, ...actors.map(actor => {
     let rect = elt("div", {class: `actor ${actor.type}`});
@@ -167,6 +183,8 @@ function drawActors(actors) {
     return rect;
   }));
 }
+
+module.exports = drawActors;
 
 DOMDisplay.prototype.syncState = function(state) {
   if (this.actorLayer) this.actorLayer.remove();
@@ -302,9 +320,7 @@ Player.prototype.update = function(time, state, keys) {
   else if ((keys.w || keys.W || keys.ц || keys.Ц  || keys.ArrowUp) && ySpeed > 0) {
     ySpeed = -jumpSpeed;  
   } 
-  // else if ((keys.w && ySpeed > 0) || (keys.W && ySpeed > 0) || (keys.ArrowUp && ySpeed > 0)) {
-  //   ySpeed = -jumpSpeed;
-  // } 
+  
   else {
     ySpeed = 0;
   }
@@ -324,6 +340,8 @@ function trackKeys(keys) {
   return down;
 }
 
+module.exports = trackKeys;
+
 var arrowKeys =
   trackKeys(["a", "d", "w","A", "D", "W", "ф", "в", "ц","Ф", "В", "Ц", "ArrowLeft", "ArrowRight", "ArrowUp"]);
 
@@ -339,6 +357,8 @@ function runAnimation(frameFunc) {
   }
   requestAnimationFrame(frame);
 }
+
+module.exports = runAnimation;
 
 function runLevel(level, Display) {
   let display = new Display(document.body, level);
@@ -362,6 +382,8 @@ function runLevel(level, Display) {
   });
 }
 
+module.exports = runLevel;
+
 async function runGame(plans, Display) {
   for (let level = 0; level < plans.length;) {
     let status = await runLevel(new Level(plans[level]),
@@ -370,3 +392,5 @@ async function runGame(plans, Display) {
   }
   alert("You've won!");
 }
+
+module.exports = runGame;
